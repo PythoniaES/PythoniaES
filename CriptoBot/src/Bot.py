@@ -1,9 +1,10 @@
 from binance.client import Client
 import datetime as dt
 import pytz
-from src.utils import*
+from src.utils import *
 import time
 import pandas as pd
+pd.options.mode.chained_assignment = None
 
 
 class CriptoBot_I():
@@ -18,7 +19,7 @@ class CriptoBot_I():
     def Set_Parameters(self, api_key, api_secret, cripto, ref, capital, EMA_F, EMA_S, period):
         self.client = Client(api_key, api_secret)
 
-        # Parameeters
+        # Parameters
         self.cripto = cripto
         self.ref = ref
         self.exchange = self.cripto + self.ref
@@ -168,7 +169,7 @@ class CriptoBot_I():
         while dt.datetime.now(dt.timezone.utc) < pytz.UTC.localize(START):
             time.sleep(1)
             pass
-            print('Strarting Bot...\n')
+            print('Starting Bot...\n')
         time.sleep(3)  # para ser seguros de encontrar los datos de la velas siguente
         print('Bot started')
         while self.RUN:
@@ -176,7 +177,6 @@ class CriptoBot_I():
             self.Single_Operation()
             retraso = time.time() - temp
             time.sleep(60 * step - retraso)
-
 
 
 

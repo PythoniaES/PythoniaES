@@ -14,6 +14,7 @@ def Get_Capital(result, ref):
         if i.get('asset') == ref:
             return float(i['free'])
 
+
 def Calculate_max_Decimal_Qty(stepSize):
     max_decimal_quantity=0
     a = 10
@@ -22,14 +23,13 @@ def Calculate_max_Decimal_Qty(stepSize):
       max_decimal_quantity += 1
     return max_decimal_quantity
 
-def Calculate_Qty(price, money, minQty, maxQty, maxDeciamlQty):
 
+def Calculate_Qty(price, money, minQty, maxQty, maxDeciamlQty):
     Q = money / price
     if (Q < minQty or Q > maxQty):
         return False
     Q = np.round(Q, maxDeciamlQty)
     return Q
-
 
 
 def Crossover(MF, MS):
